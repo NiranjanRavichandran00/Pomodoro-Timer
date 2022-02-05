@@ -3,7 +3,7 @@ import Timer from '../components/Timer'
 import About from '../components/About'
 import ModalSetting from '../components/ModalSetting'
 import Alarm from '../components/Alarm'
-import { useState , useRef, useEffect} from 'react';
+import { useState , useRef, useEffect } from 'react';
 
 export default function Home() {
 
@@ -17,10 +17,10 @@ export default function Home() {
 	const [isTimeUp, setIsTimeUp] = useState(false);
 	const [openSetting, setOpenSetting] = useState(false);
 
-	const alarmRef = useRef();
-	const pomodoroRef = useRef();
-	const shortBreakRef = useRef();
-	const longBreakRef = useRef();
+	const alarmRef: any = useRef(null);
+	const pomodoroRef: any = useRef(null);
+	const shortBreakRef: any = useRef(null);
+	const longBreakRef: any = useRef(null);
 
 	const updateTimeDefaultValue = () => {
 		setPomodoro(pomodoroRef.current.value);
@@ -31,7 +31,7 @@ export default function Home() {
 		setConsumedSecond(0);
 	};
 
-	const switchStage = (index) => {
+	const switchStage = (index: any) => {
 		const isYes =
 			consumedSecond && stage !== index
 				? confirm("Are you sure you want to switch?")
@@ -45,7 +45,7 @@ export default function Home() {
 	};
 
 	const getTickingTime = () => {
-		const timeStage = {
+		const timeStage: any = {
 			0: pomodoro,
 			1: shortBreak,
 			2: longBreak,
@@ -53,7 +53,7 @@ export default function Home() {
 		return timeStage[stage];
 	};
 	const updateMinute = () => {
-		const updateStage = {
+		const updateStage: any = {
 			0: setPomodoro,
 			1: setShortBreak,
 			2: setLongBreak,
@@ -81,7 +81,7 @@ export default function Home() {
 		if (minutes === 0 && seconds === 0) {
 			timeUp();
 		} else if (seconds === 0) {
-			setMinutes((minute) => minute - 1);
+			setMinutes((minute: any) => minute - 1);
 			setSecond(59);
 		} else {
 			setSecond((second) => second - 1);
